@@ -4,14 +4,14 @@
     <data>
         <variable
             name="viewModel"
-            type="uniba.jp.aacsample03.MainActivityViewModel" />
+            type="uniba.jp.aacsample03.viewmodel.MainActivityViewModel" />
     </data>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".view.MainActivity">
 
         <Button
             android:id="@+id/button1"

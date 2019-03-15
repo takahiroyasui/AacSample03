@@ -1,4 +1,4 @@
-package uniba.jp.aacsample03
+package uniba.jp.aacsample03.viewmodel
 
 import androidx.lifecycle.*
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -18,7 +18,6 @@ class MainActivityViewModel : ViewModel(), LifecycleObserver {
     val text : MutableLiveData<String> = MutableLiveData()
     private val apiClient = ApiClient()
     private val compositeDisposable = CompositeDisposable()
-
 
     fun onClick1() {
         apiClient.getData("130010")

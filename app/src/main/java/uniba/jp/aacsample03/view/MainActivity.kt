@@ -1,9 +1,11 @@
-package uniba.jp.aacsample03
+package uniba.jp.aacsample03.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
+import uniba.jp.aacsample03.viewmodel.MainActivityViewModel
+import uniba.jp.aacsample03.R
 import uniba.jp.aacsample03.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -20,6 +22,5 @@ class MainActivity : AppCompatActivity() {
 
         lifecycle.addObserver(viewModel)
         binding.lifecycleOwner = this
-
     }
 }
