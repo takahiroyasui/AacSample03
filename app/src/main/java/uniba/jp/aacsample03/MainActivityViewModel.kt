@@ -12,6 +12,9 @@ import uniba.jp.aacsample03.models.network.ApiClient
 
 class MainActivityViewModel : ViewModel(), LifecycleObserver {
 
+    private val viewModelJob = Job()
+    private val scope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
     val text : MutableLiveData<String> = MutableLiveData()
     private val apiClient = ApiClient()
     private val compositeDisposable = CompositeDisposable()
@@ -26,7 +29,7 @@ class MainActivityViewModel : ViewModel(), LifecycleObserver {
     }
 
     fun onClick2() {
-        GlobalScope.launch {
+        scope.launch {
             val res = apiClient.getDataAsync("130010")
             text.postValue(res.description.text)
         }
@@ -39,6 +42,7 @@ class MainActivityViewModel : ViewModel(), LifecycleObserver {
     override fun onCleared() {
         super.onCleared()
         Timber.d("onCleared")
+        viewModelJob.cancel()
         compositeDisposable.dispose()
     }
 }
