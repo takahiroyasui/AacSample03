@@ -27,7 +27,7 @@ class MainActivityViewModel : ViewModel(), LifecycleObserver {
 
     fun onClick2() {
         GlobalScope.launch {
-            val res = apiClient.getDataAsync("130010").await()
+            val res = apiClient.getDataAsync("130010")
             text.postValue(res.description.text)
         }
     }

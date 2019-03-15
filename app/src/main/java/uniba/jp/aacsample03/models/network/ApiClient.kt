@@ -3,7 +3,6 @@ package uniba.jp.aacsample03.models.network
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import io.reactivex.Single
-import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -29,5 +28,5 @@ class ApiClient {
 
     fun getData(city: String): Single<Result> = apiServiceRx.getData(city)
 
-    fun getDataAsync(city: String): Deferred<Result> = apiServiceCo.getDataAsync(city)
+    suspend fun getDataAsync(city: String): Result = apiServiceCo.getDataAsync(city).await()
 }
