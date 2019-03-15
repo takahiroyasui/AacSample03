@@ -7,7 +7,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.*
 import timber.log.Timber
-import uniba.jp.aacsample03.models.ApiClient
+import uniba.jp.aacsample03.models.network.ApiClient
 
 
 class MainActivityViewModel : ViewModel(), LifecycleObserver {
@@ -21,14 +21,14 @@ class MainActivityViewModel : ViewModel(), LifecycleObserver {
         apiClient.getData("130010")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ text.postValue(it.string()) }, Timber::e)
+            .subscribe({ text.postValue(it.description.text) }, Timber::e)
             .addTo(compositeDisposable)
     }
 
     fun onClick2() {
         GlobalScope.launch {
             val res = apiClient.getDataAsync("130010").await()
-            text.postValue(res.string())
+            text.postValue(res.description.text)
         }
     }
 
